@@ -168,14 +168,14 @@ body {
 }
 
 
-.list-item-staged li {
+.list-item-staged button {
     padding: 8px;
     border-radius: 5px;
     background-color: #fff;
     box-sizing: border-box;
 }
 
-.list-item-staged li+li {
+.list-item-staged button+button {
     margin-top: 6px;
 }
 
