@@ -1,25 +1,25 @@
 //상품 정보 데이터 불러오기
-import beverageList from './beverage.js';
+import beverageList from "./beverage.js";
 
-const listItem = document.querySelector('.list-item');
-beverageList.forEach(item=>{
-    const button = document.createElement('button');
-    button.className="btn-item";
+const listItem = document.querySelector(".list-item");
+beverageList.forEach((item) => {
+  const button = document.createElement("button");
+  button.className = "btn-item";
 
-    const image = document.createElement('img');
-    image.className = "img-item";
-    image.src = item.image;
+  const image = document.createElement("img");
+  image.className = "img-item";
+  image.src = item.image;
 
-    const productName = document.createElement('strong');
-    productName.className = "tit-item";
-    productName.innerText = item.name;
+  const productName = document.createElement("strong");
+  productName.className = "tit-item";
+  productName.innerText = item.name;
 
-    const productPrice = document.createElement('span');
-    productPrice.className = "txt-price";
-    productPrice.innerText = item.price;
+  const productPrice = document.createElement("span");
+  productPrice.className = "txt-price";
+  productPrice.innerText = item.price;
 
-    listItem.appendChild(button);
-    button.append(image,productName,productPrice);
+  listItem.appendChild(button);
+  button.append(image, productName, productPrice);
 });
 //음료수 별 클릭 횟수 배열로 담기
 
@@ -28,39 +28,40 @@ beverageList.forEach(item=>{
 //음료 클릭 시 장바구니에 담기는 기능 구현
 const listItemStaged = document.querySelector(".list-item-staged");
 console.log(listItemStaged);
-const items = document.querySelectorAll('.btn-item');
+const items = document.querySelectorAll(".btn-item");
 const special = document.querySelector(".special");
 const addCart = (e) => {
-    const lists = document.createElement("li");
+  const lists = document.createElement("li");
 
-    const button = document.createElement("button");
-    button.className = "btn.btn-staged";
-    
-    const image = document.createElement("img");
-    image.className = "img-item";
-    image.src = e.target.childNodes[0].currentSrc;
+  const button = document.createElement("button");
+  button.className = "btn.btn-staged";
 
-    const productName = document.createElement("strong");
-    productName.className = "txt-item";
-    productName.innerText = e.target.childNodes[1].innerText;
+  const image = document.createElement("img");
+  image.className = "img-item";
+  image.src = e.target.childNodes[0].currentSrc;
 
-    const productCounter = document.createElement("span");
-    productCounter.className = "num-counter";
-    productCounter.innerText = "1"; //추후에 숫자 반영하기
+  const productName = document.createElement("strong");
+  productName.className = "txt-item";
+  productName.innerText = e.target.childNodes[1].innerText;
 
-    special.appendChild(lists);
-    lists.appendChild(button);
-    button.append(image, productName,productCounter);
+  const productCounter = document.createElement("span");
+  productCounter.className = "num-counter";
+  productCounter.innerText = "1"; //추후에 숫자 반영하기
+
+  special.appendChild(lists);
+  lists.appendChild(button);
+  button.append(image, productName, productCounter);
 };
 
-items.forEach(item=>{item.addEventListener('click', addCart)});
+items.forEach((item) => {
+  item.addEventListener("click", addCart);
+});
 
-//획득 버튼 클릭시 획득 리스트에 추가하는 기능
+//획득 버튼 클릭시 획득 리스트에 추가하는 기능!
 
 const btnGet = document.querySelector(".btn-get");
-const btnStaged = document.querySelector('.btn-staged');
-const getBeverage = ()=>{
-    btnStaged.append(special);
-}
-btnGet.addEventListener("click", getBeverage)
-
+const btnStaged = document.querySelector(".btn-staged");
+const getBeverage = () => {
+  btnStaged.append(special);
+};
+btnGet.addEventListener("click", getBeverage);
