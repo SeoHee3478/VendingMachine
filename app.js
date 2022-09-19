@@ -27,8 +27,12 @@ beverageList.forEach(item=>{
 
 //음료 클릭 시 장바구니에 담기는 기능 구현
 const listItemStaged = document.querySelector(".list-item-staged");
+console.log(listItemStaged);
 const items = document.querySelectorAll('.btn-item');
+const special = document.querySelector(".special");
 const addCart = (e) => {
+    const lists = document.createElement("li");
+
     const button = document.createElement("button");
     button.className = "btn.btn-staged";
     
@@ -44,8 +48,19 @@ const addCart = (e) => {
     productCounter.className = "num-counter";
     productCounter.innerText = "1"; //추후에 숫자 반영하기
 
-    listItemStaged.appendChild(button);
+    special.appendChild(lists);
+    lists.appendChild(button);
     button.append(image, productName,productCounter);
 };
 
 items.forEach(item=>{item.addEventListener('click', addCart)});
+
+//획득 버튼 클릭시 획득 리스트에 추가하는 기능
+
+const btnGet = document.querySelector(".btn-get");
+const btnStaged = document.querySelector('.btn-staged');
+const getBeverage = ()=>{
+    btnStaged.append(special);
+}
+btnGet.addEventListener("click", getBeverage)
+
